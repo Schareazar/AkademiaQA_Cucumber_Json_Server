@@ -2,40 +2,25 @@ package pl.akademiaqa.api.employee;
 
 import lombok.RequiredArgsConstructor;
 import pl.akademiaqa.api.BaseRequest;
+import pl.akademiaqa.dto.EmployeeDto;
 import pl.akademiaqa.handlers.employee.EmployeeResponse;
 import pl.akademiaqa.url.JsonServerURLs;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
 @RequiredArgsConstructor
-public class ReadEmployeeRequest {
+public class UpdateEmployeeRequest {
 
     private final BaseRequest baseRequest;
 
-    public List<EmployeeResponse> readAllEmployees() {
-        return Arrays.asList(
-                given()
-                .spec(baseRequest.requestSetup())
-                .when()
-                .get(JsonServerURLs.EMPLOYEES)
-                .then()
-                .statusCode(200)
-                .log().ifError()
-                .extract()
-                .response()
-                .as(EmployeeResponse[].class));
-    }
-
-    public EmployeeResponse readOneEmployee(String employeeId)
+    public EmployeeResponse updateEmployee(String employeeId, EmployeeDto changedEmployee)
     {
         return
                 given()
                         .spec(baseRequest.requestSetup())
+                        .body(changedEmployee)
                         .when()
-                        .get(JsonServerURLs.getEmployeePath(employeeId))
+                        .put(JsonServerURLs.getEmployeePath(employeeId))
                         .then()
                         .statusCode(200)
                         .log().ifError()

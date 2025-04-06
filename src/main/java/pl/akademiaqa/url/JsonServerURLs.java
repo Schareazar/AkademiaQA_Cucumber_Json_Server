@@ -10,4 +10,8 @@ public class JsonServerURLs {
     public static final String EMPLOYEES = "employees/";
     public static final String BUGS = "bugs/";
 
+    public static String getEmployeePath(String employeeId) {
+        return String.format(EMPLOYEES + "%s", employeeId);
+    }
+
 }

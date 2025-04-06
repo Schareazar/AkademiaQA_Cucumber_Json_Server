@@ -40,4 +40,30 @@ public class EmployeePayload {
 
         return employee;
     }
+
+    public EmployeeDto getChangedEmployee() {
+
+        employee.setFirstName("Zmienione");
+        employee.setLastName("Zmienione");
+        employee.setUsername("TesterZmieniony");
+        employee.setEmail("zmieniony@testers.test");
+        employee.setPhone("111-111-111");
+        employee.setWebsite("www.testersltd.test");
+        employee.setRole("QA");
+        employee.setType("B2B");
+
+        address.setStreet("ul. Zmieniona");
+        address.setSuite("1/1");
+        address.setCity("Zmiana Wielka");
+        address.setZipcode("11-111");
+        employee.setAddress(address);
+
+        company.setCompanyName("Testers Ltd");
+        company.setCompanyPhone("111-111-111");
+        company.setTaxNumber("111TST");
+        employee.setCompany(company);
+
+        return employee;
+    }
+
 }
