@@ -41,4 +41,9 @@ public class ReadEmployeeSteps {
                 .isEqualTo(employeePayload.getChangedEmployee().getEmail());
     }
 
+    @Then("Deleted employee is not visible on employees list")
+    public void deleted_employee_is_not_visible_on_employees_list() {
+        allEmployeesAfter = readEmployeeRequest.readAllEmployees();
+        Assertions.assertThat(allEmployeesAfter).doesNotContain(context.getEmployeeResponse());
+    }
 }

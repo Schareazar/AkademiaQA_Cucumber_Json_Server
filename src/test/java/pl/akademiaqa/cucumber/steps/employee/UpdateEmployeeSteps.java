@@ -20,7 +20,7 @@ public class UpdateEmployeeSteps {
     public void user_changes_employees_e_mail_address() {
         EmployeeResponse employeeResponse = updateEmployeeRequest.updateEmployee(context.getEmployeeResponse().getId(),employeePayload.getChangedEmployee());
         context.setEmployeeResponse(employeeResponse);
-        Assertions.assertThat(context.getEmployeeResponse().getFirstName()).isEqualTo(employeePayload.getChangedEmployee().getFirstName());
+        Assertions.assertThat(context.getEmployeeResponse().getEmail()).isEqualTo(employeePayload.getChangedEmployee().getEmail());
     }
 
 }
