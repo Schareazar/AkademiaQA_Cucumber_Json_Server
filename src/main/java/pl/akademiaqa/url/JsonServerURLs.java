@@ -14,4 +14,7 @@ public class JsonServerURLs {
         return String.format(EMPLOYEES + "%s", employeeId);
     }
 
+    public static String getBugPath(String bugId) {
+        return String.format(BUGS + "%s", bugId);
+    }
 }
