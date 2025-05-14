@@ -6,6 +6,9 @@ import pl.akademiaqa.handlers.bug.BugResponse;
 import pl.akademiaqa.handlers.bug.ReadBugResponse;
 import pl.akademiaqa.url.JsonServerURLs;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
 
 @RequiredArgsConstructor
@@ -24,6 +27,20 @@ public class ReadBugRequest {
                 .extract()
                 .response()
                 .as(ReadBugResponse.class);
+    }
+
+    public List<BugResponse> readAllBugs() {
+        return Arrays.asList(
+                given()
+                        .spec(baseRequest.requestSetup())
+                        .when()
+                        .get(JsonServerURLs.BUGS)
+                        .then()
+                        .statusCode(200)
+                        .log().ifError()
+                        .extract()
+                        .response()
+                        .as(ReadBugResponse[].class));
     }
 
 }

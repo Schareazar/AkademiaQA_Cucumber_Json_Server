@@ -27,4 +27,5 @@ public class CreateBugRequest {
                 .response()
                 .as(CreateBugResponse.class);
     }
+
 }
